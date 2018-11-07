@@ -1,0 +1,56 @@
+<html>
+ <head>
+ <title> Hello World! </title>
+ </head>
+ <body>
+
+<input id="mov" type="text" placeholder="Enter Movie" name="movie" required>
+<!--<input id="rat" type="text" placeholder="Enter Rating" name="rating" required>
+<button type="submit" value="Submit" onclick="addtolist()">Submit</button>-->
+<button type="submit" value="Get Movies" onclick="get()">Get</button>
+ </body>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+
+var movlist=[];
+var name;
+//name=document.getElementById('mov').value;
+function get() {
+  //name=document.getElementById('mov');
+  name=document.getElementById('mov').value;
+  console.log(name);
+  console.log('http://www.omdbapi.com/?t='+name+'&apikey=d3049279');
+  axios.get('http://www.omdbapi.com/?t='+name+'&apikey=d3049279')
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+
+/*
+function addtolist() {
+// make put request to add to list
+axios({
+  method: 'put',
+  url: 'http://img.www.omdbapi.com/?i=tt3896198&apikey=d3049279',
+  data: {
+    movie: document.getElementById('mov'),
+    rating: document.getElementById('rat')
+  }
+})
+
+movlist.push(movie);
+console.log(movlist);
+
+}
+*/
+
+
+
+</script>
+
+</html>
